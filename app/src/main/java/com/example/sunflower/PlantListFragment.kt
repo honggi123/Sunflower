@@ -23,6 +23,7 @@ class PlantListFragment : Fragment() {
         binding.plantList.adapter = adapter
         subscribeUi(adapter)
 
+        setHasOptionsMenu(true)
         return binding.root
     }
 
