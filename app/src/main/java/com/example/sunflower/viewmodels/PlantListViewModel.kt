@@ -3,12 +3,15 @@ package com.example.sunflower.viewmodels
 import androidx.lifecycle.*
 import com.example.sunflower.data.Plant
 import com.example.sunflower.data.PlantRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PlantListViewModel internal constructor(
+@HiltViewModel
+class PlantListViewModel @Inject internal constructor(
     plantRepository: PlantRepository,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {

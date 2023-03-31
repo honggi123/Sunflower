@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.sunflower.adapters.PlantAdapter
 import com.example.sunflower.databinding.FragmentPlantListBinding
 import com.example.sunflower.viewmodels.PlantListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PlantListFragment : Fragment() {
 
-    private lateinit var viewmodel: PlantListViewModel
+    private val viewmodel: PlantListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
