@@ -1,8 +1,9 @@
 package com.example.sunflower.di
 
 import android.content.Context
+import android.util.Log
+import com.example.sunflower.data.AppDatabase
 import com.example.sunflower.data.PlantDao
-import com.google.samples.apps.sunflower.data.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +17,7 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideAppDatabase(@ApplicationContext context: Context) : AppDatabase{
+    fun provideAppDatabase(@ApplicationContext context: Context) : AppDatabase {
         return AppDatabase.getInstance(context)
     }
 

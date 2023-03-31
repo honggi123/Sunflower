@@ -1,5 +1,6 @@
 package com.example.sunflower.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.sunflower.data.Plant
 import com.example.sunflower.data.PlantRepository
@@ -29,18 +30,18 @@ class PlantListViewModel @Inject internal constructor(
     }.asLiveData()
 
     init {
-        viewModelScope.launch{
-            growZone.collect{ newGrowZone ->
-                savedStateHandle.set(GROW_ZONE_SAVED_STATE_KEY,newGrowZone)
+        viewModelScope.launch {
+            growZone.collect { newGrowZone ->
+                savedStateHandle.set(GROW_ZONE_SAVED_STATE_KEY, newGrowZone)
             }
         }
     }
 
-    fun setGrowZoneNumber(num : Int){
+    fun setGrowZoneNumber(num: Int) {
         growZone.value = num
     }
 
-    fun clearGrowZoneNumber(){
+    fun clearGrowZoneNumber() {
         growZone.value = NO_GROW_ZONE
     }
 

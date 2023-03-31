@@ -5,12 +5,14 @@
       <map>
         <entry key="app/src/main/res/drawable/garden_tab_selector.xml" value="0.101" />
         <entry key="app/src/main/res/drawable/ic_detail_share.xml" value="0.101" />
+        <entry key="app/src/main/res/drawable/ic_my_garden_inactive.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_plant_list_inactive.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/tab_icon_color_selector.xml" value="0.101" />
         <entry key="app/src/main/res/layout/activity_garden.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragement_gallery.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.18125" />
-        <entry key="app/src/main/res/layout/fragment_garden.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/fragment_garden.xml" value="0.14948453608247422" />
         <entry key="app/src/main/res/layout/fragment_plant_detail.xml" value="0.18143459915611815" />
         <entry key="app/src/main/res/layout/fragment_plant_list.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.1" />

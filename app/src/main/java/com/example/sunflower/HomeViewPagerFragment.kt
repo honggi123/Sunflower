@@ -12,7 +12,9 @@ import com.example.sunflower.adapters.PLANT_LIST_PAGE_INDEX
 import com.example.sunflower.adapters.SunflowerPagerAdapter
 import com.example.sunflower.databinding.FragmentViewPagerBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeViewPagerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,

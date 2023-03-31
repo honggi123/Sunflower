@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.sunflower.adapters.PlantAdapter
 import com.example.sunflower.databinding.FragmentGardenBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GardenFragment :Fragment(){
     private lateinit var binding: FragmentGardenBinding
 

@@ -1,8 +1,24 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-}
+/*
+ * Copyright 2018 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -14,15 +30,27 @@ android {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "0.1.6"
+        vectorDrawables.useSupportLibrary true
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // Consult the README on instructions for setting up Unsplash API key
+        buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"" + getUnsplashAccess() + "\"")
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
+            }
+        }
     }
-
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        benchmark {
+            initWith buildTypes.release
+            signingConfig signingConfigs.debug
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard-rules-benchmark.pro'
         }
     }
     compileOptions {
@@ -31,7 +59,18 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        // work-runtime-ktx 2.1.0 and above now requires Java 8
+        jvmTarget = "1.8"
+
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
+    packagingOptions {
+        // Multiple dependency bring these files in. Exclude them to enable
+        // our test APK to build (has no effect on our AARs)
+        excludes += "/META-INF/AL2.0"
+        excludes += "/META-INF/LGPL2.1"
     }
 }
 
@@ -64,12 +103,21 @@ dependencies {
     implementation "androidx.profileinstaller:profileinstaller:$rootProject.profileInstallerVersion"
     implementation "androidx.tracing:tracing-ktx:$rootProject.tracingVersion"
 
+    // Testing dependencies
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.testExtJunit"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.uiAutomatorVersion"
+    androidTestImplementation "androidx.work:work-testing:$rootProject.workVersion"
+    androidTestImplementation "com.google.truth:truth:$rootProject.truthVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$rootProject.hiltVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesVersion"
+    testImplementation "junit:junit:$rootProject.junitVersion"
+}
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+def getUnsplashAccess() {
+    return project.findProperty("unsplash_access_key")
 }

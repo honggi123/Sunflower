@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2018 Google LLC
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,21 +34,19 @@
             android:id="@+id/garden_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
             android:layout_marginStart="@dimen/card_side_margin"
-            android:layout_marginEnd="@dimen/card_side_margin"
             android:layout_marginTop="@dimen/margin_normal"
-            app:isGone="@{!hasPlantings}"
+            android:layout_marginEnd="@dimen/card_side_margin"
+            android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="@integer/grid_columns"
-            tools:listitem="@layout/list_item_garden_planting"/>
+            tools:listitem="@layout/list_item_garden_planting" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical"
-            app:isGone="@{hasPlantings}">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/empty_garden"
@@ -62,10 +59,10 @@
                 android:id="@+id/add_plant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="?attr/colorPrimary"
                 android:text="@string/add_plant"
+                android:textColor="?attr/colorPrimary"
                 app:backgroundTint="?attr/colorOnPrimary"
-                app:shapeAppearance="@style/ShapeAppearance.Sunflower.Button.Add"/>
+                app:shapeAppearance="@style/ShapeAppearance.Sunflower.Button.Add" />
 
         </LinearLayout>
 

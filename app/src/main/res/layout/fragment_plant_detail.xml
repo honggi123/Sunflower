@@ -2,10 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    >
+
 
     <data>
-
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -14,7 +13,6 @@
         android:layout_height="match_parent"
         android:background="?attr/colorSurface"
         android:fitsSystemWindows="true"
-        tools:context="com.google.samples.apps.sunflower.GardenActivity"
         tools:ignore="MergeRootFrame">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -52,11 +50,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@android:color/transparent"
-                    app:titleTextColor="?attr/colorOnSurface"
-                    app:layout_collapseMode="pin"
                     app:contentInsetStartWithNavigation="0dp"
+                    app:layout_collapseMode="pin"
+                    app:menu="@menu/menu_plant_detail"
                     app:navigationIcon="@drawable/ic_detail_back"
-                    app:menu="@menu/menu_plant_detail" />
+                    app:titleTextColor="?attr/colorOnSurface" />
 
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -82,9 +80,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:gravity="center_horizontal"
                     android:clickable="true"
                     android:focusable="true"
+                    android:gravity="center_horizontal"
                     android:textAppearance="?attr/textAppearanceHeadline5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -122,8 +120,8 @@
                     android:id="@+id/gallery_nav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_small"
                     android:clickable="true"
                     android:contentDescription="@string/gallery_content_description"
                     android:focusable="true"
@@ -139,8 +137,8 @@
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:textIsSelectable="true"
                     android:minHeight="@dimen/plant_description_min_height"
+                    android:textIsSelectable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/plant_watering"
@@ -157,9 +155,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:tint="@android:color/white"
-            app:shapeAppearance="@style/ShapeAppearance.Sunflower.FAB"
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom|end"
+            app:shapeAppearance="@style/ShapeAppearance.Sunflower.FAB"
             app:srcCompat="@drawable/ic_plus" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
