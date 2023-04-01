@@ -45,6 +45,8 @@ class PlantListViewModel @Inject internal constructor(
         growZone.value = NO_GROW_ZONE
     }
 
+    fun isFiltered() = growZone.value != NO_GROW_ZONE
+
     companion object {
         private const val NO_GROW_ZONE = -1
         private const val GROW_ZONE_SAVED_STATE_KEY = "GROW_ZONE_SAVED_STATE_KEY"
