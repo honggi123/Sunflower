@@ -13,12 +13,12 @@
         <entry key="app/src/main/res/layout/fragement_gallery.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.18125" />
         <entry key="app/src/main/res/layout/fragment_garden.xml" value="0.14948453608247422" />
-        <entry key="app/src/main/res/layout/fragment_plant_detail.xml" value="0.18143459915611815" />
+        <entry key="app/src/main/res/layout/fragment_plant_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_plant_list.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_garden_planting.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/list_item_photo.xml" value="0.19114583333333332" />
-        <entry key="app/src/main/res/layout/list_item_plant.xml" value="0.22916666666666666" />
+        <entry key="app/src/main/res/layout/list_item_plant.xml" value="0.11158798283261803" />
         <entry key="app/src/main/res/menu/menu_plant_detail.xml" value="0.1921875" />
         <entry key="app/src/main/res/menu/menu_plant_list.xml" value="0.1921875" />
       </map>
