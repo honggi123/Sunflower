@@ -3,6 +3,7 @@ package com.example.sunflower.di
 import android.content.Context
 import android.util.Log
 import com.example.sunflower.data.AppDatabase
+import com.example.sunflower.data.GardenPlantingDao
 import com.example.sunflower.data.PlantDao
 import dagger.Module
 import dagger.Provides
@@ -24,6 +25,11 @@ class DatabaseModule {
     @Provides
     fun providePlantDao(appDatabase: AppDatabase): PlantDao {
         return appDatabase.plantDao()
+    }
+
+    @Provides
+    fun provideGardenPlantingDao(appDatabase: AppDatabase): GardenPlantingDao {
+        return appDatabase.gardenPlantingDao()
     }
 
 }

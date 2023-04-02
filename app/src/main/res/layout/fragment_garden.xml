@@ -19,11 +19,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="hasPlantings"
             type="boolean" />
-
     </data>
 
     <FrameLayout
@@ -38,6 +36,7 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:layout_marginEnd="@dimen/card_side_margin"
             android:clipToPadding="false"
+            app:isGone="@{!hasPlantings}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="@integer/grid_columns"
             tools:listitem="@layout/list_item_garden_planting" />
@@ -46,7 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:isGone="@{hasPlantings}">
 
             <TextView
                 android:id="@+id/empty_garden"
