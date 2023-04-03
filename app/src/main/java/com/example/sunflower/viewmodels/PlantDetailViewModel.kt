@@ -15,17 +15,18 @@ class PlantDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     plantRepository: PlantRepository,
     private val gardenPlantingRepository: GardenPlantingRepository
-) : ViewModel(){
+) : ViewModel() {
 
     val plantId: String = savedStateHandle.get<String>(PLANT_ID_SAVED_STATE_KEY)!!
-
+    val isPlanted = gardenPlantingRepository.isPlanted(plantId).asLiveData()
     val plant = plantRepository.getPlant(plantId).asLiveData()
 
-    fun addPlantToGarden(){
+    fun addPlantToGarden() {
         viewModelScope.launch {
             gardenPlantingRepository.createGardenPlanting(plantId)
         }
     }
+
     companion object {
         private const val PLANT_ID_SAVED_STATE_KEY = "plantId"
     }
