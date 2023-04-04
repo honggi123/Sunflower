@@ -1,14 +1,18 @@
 package com.example.sunflower.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.sunflower.data.Plant
 import com.example.sunflower.data.PlantRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PlantListViewModel internal constructor(
+@HiltViewModel
+class PlantListViewModel @Inject internal constructor(
     plantRepository: PlantRepository,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -26,20 +30,22 @@ class PlantListViewModel internal constructor(
     }.asLiveData()
 
     init {
-        viewModelScope.launch{
-            growZone.collect{ newGrowZone ->
-                savedStateHandle.set(GROW_ZONE_SAVED_STATE_KEY,newGrowZone)
+        viewModelScope.launch {
+            growZone.collect { newGrowZone ->
+                savedStateHandle.set(GROW_ZONE_SAVED_STATE_KEY, newGrowZone)
             }
         }
     }
 
-    fun setGrowZoneNumber(num : Int){
+    fun setGrowZoneNumber(num: Int) {
         growZone.value = num
     }
 
-    fun clearGrowZoneNumber(){
+    fun clearGrowZoneNumber() {
         growZone.value = NO_GROW_ZONE
     }
+
+    fun isFiltered() = growZone.value != NO_GROW_ZONE
 
     companion object {
         private const val NO_GROW_ZONE = -1

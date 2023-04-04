@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.utilities
+package com.example.sunflower.utilities
 
 /**
  * Constants used throughout the app.
