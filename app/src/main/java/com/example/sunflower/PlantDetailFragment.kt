@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.sunflower.data.Plant
 import com.example.sunflower.databinding.FragmentPlantDetailBinding
 import com.example.sunflower.viewmodels.PlantDetailViewModel
@@ -46,6 +47,7 @@ class PlantDetailFragment : Fragment() {
                         .show()
                 }
             }
+            galleryNav.setOnClickListener { navigateToGallery() }
 
             toolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
@@ -65,6 +67,14 @@ class PlantDetailFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun navigateToGallery() {
+        plantDetailViewModel.plant.value?.let { plant ->
+            val direction =
+                PlantDetailFragmentDirections.actionPlantDetailFragmentToGalleryFragment(plant.name)
+            findNavController().navigate(direction)
+        }
     }
 
     // Helper function for calling a share functionality.
