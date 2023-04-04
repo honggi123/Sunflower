@@ -56,6 +56,7 @@
     <fragment
         android:id="@+id/gallery_fragment"
         android:label="@string/plant_details_title"
+        android:name="com.example.sunflower.GalleryFragment"
         tools:layout="@layout/fragment_gallery">
         <argument
             android:name="plantName"
